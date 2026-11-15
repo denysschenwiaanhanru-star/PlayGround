@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101016" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='.9em' font-size='56'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E" />
+  <title>Afterglow — stories that stay with you</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Afterglow home"><span class="brand-mark">✦</span><span>afterglow</span></a>
+      <button class="new-story" id="newStory"><span>＋</span> New story</button>
+      <div class="side-label">YOUR SPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="discover"><span class="nav-icon">◈</span> Discover <span class="nav-arrow">›</span></button>
+        <button class="nav-item" data-view="chats"><span class="nav-icon">▣</span> Your stories <span class="count">3</span></button>
+        <button class="nav-item" data-view="gallery"><span class="nav-icon">▧</span> Keepsakes</button>
+      </nav>
+      <div class="side-label chat-label">RECENT STORIES <button id="moreChats" aria-label="More stories">···</button></div>
+      <div class="recent-list" id="recentList"></div>
+      <div class="sidebar-bottom">
+        <div class="plan-card"><div class="plan-icon">∞</div><div><strong>Make it yours</strong><span>Unlimited moments</span></div><span class="plan-chevron">↗</span></div>
+        <button class="profile-button"><span class="profile-avatar">J</span><span class="profile-copy"><strong>Jamie Parker</strong><small>Storyteller</small></span><span class="profile-dots">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar"><div class="breadcrumbs"><span>YOUR SPACE</span><b>/</b><strong id="topTitle">DISCOVER</strong></div><div class="top-actions"><button class="icon-button" id="searchBtn" aria-label="Search">⌕</button><button class="icon-button notification" aria-label="Notifications">♧<i></i></button><span class="top-divider"></span><button class="help-button">How it works <span>↗</span></button></div></header>
+      <section id="discoverView" class="view discover-view">
+        <div class="welcome-row"><div><div class="eyebrow"><span class="sparkle">✦</span> YOUR NEXT CHAPTER STARTS HERE</div><h1>Meet someone<br><em>unforgettable.</em></h1><p class="welcome-copy">A little curiosity can lead anywhere. Pick a story and see where it takes you.</p></div><div class="welcome-decoration"><span class="deco-orb orb-one"></span><span class="deco-orb orb-two"></span><div class="deco-star">✦</div><div class="deco-caption">MAKE<br>ROOM FOR<br><i>WONDER</i></div></div></div>
+        <div class="section-heading"><div><h2>Stories to fall into</h2><p>Thoughtful characters. Unexpected turns.</p></div><button class="text-link" id="seeAll">See all <span>→</span></button></div>
+        <div class="filter-row" id="filters"><button class="filter active" data-filter="All">All stories</button><button class="filter" data-filter="Slow burn">Slow burn</button><button class="filter" data-filter="Fantasy">Fantasy</button><button class="filter" data-filter="Mystery">Mystery</button><button class="filter" data-filter="Cozy">Cozy</button></div>
+        <div class="character-grid" id="characterGrid"></div>
+        <div class="bottom-note"><span>✦</span> Every story is yours to shape. No wrong turns, just better ones.</div>
+      </section>
+      <section id="chatView" class="view chat-view hidden">
+        <div class="chat-header"><button class="back-button" id="backDiscover">←</button><div class="chat-person"><div class="avatar small-avatar" id="chatAvatar"></div><div><div class="person-name" id="chatName"></div><div class="online-status"><i></i> HERE WITH YOU</div></div></div><div class="chat-head-actions"><button class="soft-button" id="viewGallery">▧ <span>Keepsakes</span></button><button class="round-button" id="chatMenu" aria-label="Story settings">···</button></div></div>
+        <div class="story-progress"><span id="chapterLabel">CHAPTER 01</span><div class="progress-track"><i id="progressFill"></i></div><span id="bondLabel">A NEW SPARK</span></div>
+        <div class="chat-scroll" id="chatScroll"><div class="story-intro" id="storyIntro"></div><div class="message-list" id="messageList"></div><div class="typing hidden" id="typing"><span></span><span></span><span></span><i id="typingName"></i> is thinking</div></div>
+        <div class="chat-footer"><div class="suggestion-row" id="suggestions"></div><div class="composer"><button class="attach-button" id="openImage" title="Create a keepsake">＋</button><textarea id="messageInput" rows="1" placeholder="Write what you say…" aria-label="Write a message"></textarea><button class="send-button" id="sendMessage" aria-label="Send message">↑</button></div><div class="composer-note"><span>↵ Send</span><span>Just a story, completely yours <b>✦</b></span></div></div>
+      </section>
+      <section id="galleryView" class="view gallery-view hidden"><div class="gallery-top"><button class="back-button" id="galleryBack">←</button><div><div class="eyebrow"><span class="sparkle">✦</span> YOUR LITTLE TIME CAPSULE</div><h1>Keepsakes <em>& moments.</em></h1><p>All the scenes you made together, in one place.</p></div><button class="primary-button" id="galleryGenerate">＋ Create a moment</button></div><div class="gallery-grid" id="galleryGrid"></div></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="imageModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="image-modal"><button class="modal-close" id="closeModal" aria-label="Close">×</button><div class="modal-art" id="modalArt"><div class="art-label"><span>✦</span> A MOMENT TO KEEP</div><div class="art-caption" id="artCaption"></div><div class="art-credit" id="artCredit"></div></div><div class="modal-content"><div class="eyebrow"><span class="sparkle">✦</span> YOUR STORY, IN A FRAME</div><h2 id="modalTitle">Picture this moment.</h2><p>Describe a scene and we'll make a one-of-a-kind story illustration for your keepsakes.</p><label for="scenePrompt">SCENE DESCRIPTION</label><textarea id="scenePrompt" rows="2" placeholder="A rainy-night bookstore, warm light, a secret smile…"></textarea><div class="scene-chips"><button data-scene="under a sky full of stars">Stargazing</button><button data-scene="at a candlelit little cafe">Late-night cafe</button><button data-scene="on a sun-drenched coastal walk">By the sea</button></div><button class="generate-button" id="generateImage"><span>✧</span> Create keepsake <small>∞ UNLIMITED</small></button><div class="modal-footnote">Made just for this story · No tokens, no limits</div></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
